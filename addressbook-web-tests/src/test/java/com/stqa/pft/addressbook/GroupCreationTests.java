@@ -1,7 +1,6 @@
 package com.stqa.pft.addressbook;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -11,15 +10,10 @@ import java.util.concurrent.TimeUnit;
 
 public class GroupCreationTests {
   FirefoxDriver wd;
-  //*run chrome* ChromeDriver wd;
-
 
   @BeforeMethod
   public void setUp() throws Exception {
-    System.setProperty("webdriver.gecko.driver", "C:/Tools/geckodriver.exe");
-    //*run chrome*  System.setProperty("webdriver.chrome.driver", "C:/Tools/chromedriver.exe");
     wd = new FirefoxDriver();
-    //* run chrome* wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/group.php");
     login("admin", "secret");
@@ -46,7 +40,7 @@ public class GroupCreationTests {
   }
 
   private void returnToGroupPage() {
-    wd.findElement(By.linkText("group page")).click();
+    wd.findElement(By.linkText("group_page")).click();
   }
 
   private void submitGroupCreation() {
