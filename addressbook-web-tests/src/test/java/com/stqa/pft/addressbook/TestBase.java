@@ -73,6 +73,14 @@ public class TestBase {
     wd.findElement(By.name("selected[]")).click();
   }
 
+  protected void selectContact() {
+    wd.findElement(By.name("selected[]")).click();
+  }
+
+  protected void deleteSelectedContacts() {
+    wd.findElement(By.xpath("//*[@id=\"content\"]/form[2]/div[2]/input"));
+  }
+
    /*
   public static boolean isAlertPresent(FirefoxDriver) {
     try {
