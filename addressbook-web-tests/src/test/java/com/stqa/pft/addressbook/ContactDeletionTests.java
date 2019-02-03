@@ -6,7 +6,8 @@ public class ContactDeletionTests extends TestBase {
   //gotoContactPage();
   @Test
   public void testContactDeletion() {
-    selectContact();
+    gotoHomePage();
+    editContact();
     deleteSelectedContacts();
   }
 }

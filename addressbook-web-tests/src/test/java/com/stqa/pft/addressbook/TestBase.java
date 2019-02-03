@@ -1,6 +1,7 @@
 package com.stqa.pft.addressbook;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -32,6 +33,10 @@ public class TestBase {
     wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
   }
 
+
+  @AfterMethod
+  public void tearDown() {
+    wd.quit(); }
   protected void returnToGroupPage() {
     wd.findElement(By.linkText("group page")).click();
   }
@@ -60,10 +65,6 @@ public class TestBase {
     wd.findElement(By.linkText("groups")).click();
   }
 
-  @AfterMethod
-  public void tearDown() {
-    wd.quit();
-  }
 
   protected void deleteSelectedGroups() {
     wd.findElement(By.name("delete")).click();
@@ -77,9 +78,46 @@ public class TestBase {
     wd.findElement(By.name("selected[]")).click();
   }
 
-  protected void deleteSelectedContacts() {
-    wd.findElement(By.xpath("//*[@id=\"content\"]/form[2]/div[2]/input"));
+  protected void editContact() {
+    wd.findElement(By.xpath("//*[@id=\"maintable\"]/tbody/tr[2]/td[8]/a/img")).click();
+    JavascriptExecutor jse = (JavascriptExecutor) wd;
+    jse.executeScript("window.scrollBy(0,350)", "");
   }
+
+  protected void deleteSelectedContacts() {
+    wd.findElement(By.xpath("//*[@id=\"content\"]/form[2]/input[2]")).click();
+  }
+
+  protected void gotoHomePage() {
+    wd.findElement(By.xpath("//*[@id=\"nav\"]/ul/li[1]/a")).click();
+  }
+
+  protected void submitContactCreation() {
+    wd.findElement(By.name("submit")).click();
+  }
+
+  protected void fillContactForm(ContactData contactData) {
+    wd.findElement(By.name("firstname")).click();
+    wd.findElement(By.name("firstname")).clear();
+    wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstName());
+    wd.findElement(By.name("lastname")).click();
+    wd.findElement(By.name("lastname")).clear();
+    wd.findElement(By.name("lastname")).sendKeys(contactData.getLastName());
+    wd.findElement(By.name("company")).click();
+    wd.findElement(By.name("company")).clear();
+    wd.findElement(By.name("company")).sendKeys(contactData.getCompany());
+    wd.findElement(By.name("mobile")).click();
+    wd.findElement(By.name("mobile")).clear();
+    wd.findElement(By.name("mobile")).sendKeys(contactData.getMobile());
+    wd.findElement(By.name("email")).click();
+    wd.findElement(By.name("email")).clear();
+    wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
+  }
+
+  protected void gotoContactPage() {
+    wd.findElement(By.linkText("add new")).click();
+  }
+
 
    /*
   public static boolean isAlertPresent(FirefoxDriver) {
