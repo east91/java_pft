@@ -11,9 +11,9 @@ public class ApplicationManager {
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
   private ContactHelper contactHelper;
-  //FirefoxDriver wd;
-
   private GroupHelper groupHelper;
+
+  //FirefoxDriver wd;
   //*run chrome* ChromeDriver wd;
 
   public void init() {
