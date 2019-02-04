@@ -6,7 +6,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class ContactHelper extends HelperBase {
- // FirefoxDriver wd;
 
   public ContactHelper(FirefoxDriver wd) {
     super(wd);

@@ -15,5 +15,4 @@ public class GroupCreationTests extends TestBase {
 
   }
 
-
 }
