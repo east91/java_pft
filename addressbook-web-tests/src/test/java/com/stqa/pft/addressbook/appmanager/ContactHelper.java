@@ -37,4 +37,8 @@ public class ContactHelper extends HelperBase {
     type(By.name("mobile"), contactData.getMobile());
     type(By.name("email"), contactData.getEmail());
   }
+
+  public void submitUpdateContactCreation() {
+    click(By.name("update"));
+  }
 }
