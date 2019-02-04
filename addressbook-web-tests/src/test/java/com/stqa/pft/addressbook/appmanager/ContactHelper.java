@@ -13,7 +13,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectContact() {
-    selectContact();
+    click(By.name("selected[]"));
   }
 
   public void editContact() {
