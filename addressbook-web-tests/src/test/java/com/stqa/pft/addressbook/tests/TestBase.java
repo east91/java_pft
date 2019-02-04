@@ -19,14 +19,4 @@ public class TestBase {
   public void tearDown() {
     app.stop(); }
 
-
-  /*
-  public static boolean isAlertPresent(FirefoxDriver) {
-    try {
-      wd.switchTo().alert();
-      return true;
-    } catch (NoAlertPresentExeption e) {
-      return false;
-    }
-  }*/
 }
