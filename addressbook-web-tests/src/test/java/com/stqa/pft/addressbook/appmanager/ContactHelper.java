@@ -8,6 +8,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class ContactHelper {
   FirefoxDriver wd;
 
+  public ContactHelper(FirefoxDriver wd) {
+    this.wd = wd;
+  }
+
   public void selectContact() {
     selectContact();
   }

@@ -5,7 +5,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class GroupHelper {
-  FirefoxDriver wd;
+  private FirefoxDriver wd;
+
+  public GroupHelper(FirefoxDriver wd) {
+    this.wd = wd;
+  }
 
   public void returnToGroupPage() {
     wd.findElement(By.linkText("group page")).click();
