@@ -21,8 +21,12 @@ public class ContactHelper extends HelperBase {
     jse.executeScript("window.scrollBy(0,350)", "");
   }
 
+  public void deleteSelectedContactsFromHomePage() {
+    click(By.xpath("//*[@id=\"content\"]/form[2]/div[2]/input"));
+  }
+
   public void deleteSelectedContacts() {
-    click(By.xpath("//*[@id=\"content\"]/form[2]/input[2]"));
+    click(By.xpath("//*[@id=\"content\"]/form[1]/input[22]"));
   }
 
   public void submitContactCreation() {
@@ -40,5 +44,9 @@ public class ContactHelper extends HelperBase {
 
   public void submitUpdateContactCreation() {
     click(By.name("update"));
+  }
+
+  public void closeAlertPopUP() {
+    wd.switchTo().alert().accept();
   }
 }
