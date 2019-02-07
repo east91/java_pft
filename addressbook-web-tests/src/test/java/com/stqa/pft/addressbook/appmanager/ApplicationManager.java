@@ -2,6 +2,7 @@ package com.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
@@ -29,8 +30,9 @@ public class ApplicationManager {
     } else if (browser == BrowserType.CHROME) {
       wd = new ChromeDriver();
       System.setProperty("webdriver.chrome.driver", "C:/Tools/chromedriver.exe");
-    } else if (browser == BrowserType.IE) {
-      wd = new InternetExplorerDriver();
+    } else if (browser == BrowserType.EDGE) {
+      wd = new EdgeDriver();
+      System.setProperty("webdriver.edge.driver", "C:/Tools/MicrosoftWebDriver.exe");
     }
 
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
