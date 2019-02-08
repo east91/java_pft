@@ -18,7 +18,7 @@ public class NavigationHelper extends HelperBase {
     click(By.xpath("//*[@id=\"nav\"]/ul/li[1]/a"));
   }
 
-  public void gotoContactPage() {
+  public void initContactCreation() {
     click(By.linkText("add new"));
   }
 }

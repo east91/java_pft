@@ -16,7 +16,7 @@ public class ContactHelper extends HelperBase {
     click(By.name("selected[]"));
   }
 
-  public void editContact() {
+  public void initContactModification() {
     click(By.xpath("//*[@id=\"maintable\"]/tbody/tr[2]/td[8]/a/img"));
     JavascriptExecutor jse = (JavascriptExecutor) wd;
     jse.executeScript("window.scrollBy(0,350)", "");
@@ -43,7 +43,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("email"), contactData.getEmail());
   }
 
-  public void submitUpdateContactCreation() {
+  public void submitUpdateContactModification() {
     click(By.name("update"));
   }
 
