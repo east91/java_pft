@@ -3,9 +3,7 @@ package com.stqa.pft.addressbook.appmanager;
 import com.stqa.pft.addressbook.model.ContactData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
@@ -30,11 +28,10 @@ public class ContactHelper extends HelperBase {
   }
 
   public void deleteSelectedContacts() {
-    click(By.xpath("//*[@id=\"content\"]/form[1]/input[22]"));
+    click(By.xpath("//*[@id=\"content\"]/form[2]/input[2]"));
   }
 
   public void submitContactCreation() {
-    //submitContactCreation();
     click(By.name("submit"));
   }
 
@@ -59,4 +56,31 @@ public class ContactHelper extends HelperBase {
   public void closeAlertPopUP() {
     wd.switchTo().alert().accept();
   }
+
+  public void gotoHomePage() {
+    if (isElementPresent(By.name("maintable"))) {
+      return;
+    }
+    click(By.linkText("home"));
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.xpath("//*[@id=\"maintable\"]/tbody/tr[2]/td[8]/a/img"));
+  }
+
+  public void createContact(ContactData contact) {
+    initContactCreation();
+    fillContactForm((contact), true);
+    submitContactCreation();
+    gotoHomePage();
+  }
+
+  public void initContactCreation() {
+    if (isElementPresent(By.name("maintable"))) {
+      return;
+    }
+    click(By.linkText("add new"));
+  }
+
+
 }

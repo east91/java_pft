@@ -19,12 +19,13 @@ public class NavigationHelper extends HelperBase {
     click(By.linkText("groups"));
   }
 
-  public void gotoHomePage() {
-    if (isElementPresent(By.name("maintable"))) {
+  public void gotoHomePage() throws InterruptedException {
+    if (isElementPresent(By.name("maintable"))) {     // !!!!not sure if it is working!!!!
       return;
     }
     //click(By.xpath("//*[@id=\"nav\"]/ul/li[1]/a"));
     click(By.linkText("home"));
+    Thread.sleep(5000);
   }
 
   public void initContactCreation() {

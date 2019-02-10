@@ -6,10 +6,10 @@ import org.testng.annotations.Test;
 public class ContactCreationTests extends TestBase {
 
   @Test
-  public void testContactCreation() {
+  public void testContactCreation() throws InterruptedException {
     app.getNavigationHelper().gotoHomePage();
     app.getNavigationHelper().initContactCreation();
-    app.getContactHelper().fillContactForm(new ContactData("test1", "test2", "test3", "test4", "test5", "test1"), true);
+    app.getContactHelper().fillContactForm(new ContactData("test1", null, null, null, null, "test1"), true);
     app.getContactHelper().submitContactCreation();
     app.getNavigationHelper().gotoHomePage();
   }
