@@ -20,11 +20,15 @@ public class NavigationHelper extends HelperBase {
   }
 
   public void gotoHomePage() {
-    click(By.xpath("//*[@id=\"nav\"]/ul/li[1]/a"));
+    if (isElementPresent(By.name("maintable"))) {
+      return;
+    }
+    //click(By.xpath("//*[@id=\"nav\"]/ul/li[1]/a"));
+    click(By.linkText("home"));
   }
 
   public void initContactCreation() {
-    if (isElementPresent(By.id("maintable"))) {
+    if (isElementPresent(By.name("maintable"))) {
       return;
     }
     click(By.linkText("add new"));
