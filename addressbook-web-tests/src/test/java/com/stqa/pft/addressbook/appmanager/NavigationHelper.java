@@ -25,7 +25,7 @@ public class NavigationHelper extends HelperBase {
     }
     //click(By.xpath("//*[@id=\"nav\"]/ul/li[1]/a"));
     click(By.linkText("home"));
-    Thread.sleep(5000);
+    Thread.sleep(1000);
   }
 
   public void initContactCreation() {

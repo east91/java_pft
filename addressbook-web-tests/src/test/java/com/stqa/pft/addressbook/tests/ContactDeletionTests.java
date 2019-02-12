@@ -6,20 +6,18 @@ import org.testng.annotations.Test;
 
 public class ContactDeletionTests extends TestBase {
 
-  @Test
+  @Test     //need to add option to delete last contact. the problem is - can't find locator for now
   public void testContactDeletion() throws InterruptedException {
     app.getNavigationHelper().gotoHomePage();
-    //Thread.sleep(100);
-    //int before = app.getGroupHelper().getGroupCount();
-
+    int before = app.getContactHelper().getContactCount();
     if (!app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData("test1", null, null, null, null, "test1"));
     }
     app.getContactHelper().initContactModification();
     app.getContactHelper().deleteSelectedContacts();
     app.getNavigationHelper().gotoHomePage();
-    //int after = app.getGroupHelper().getGroupCount();
-    //Assert.assertEquals(after, before - 1);
+    int after = app.getContactHelper().getContactCount();
+    Assert.assertEquals(after, before - 1);
 
 
   }

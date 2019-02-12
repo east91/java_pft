@@ -13,14 +13,16 @@ public class ContactHelper extends HelperBase {
     super(wd);
   }
 
-  public void selectContact() {
-    click(By.name("selected[]"));
+  public void selectContact(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
+   // click(By.name("selected[]"));
   }
 
-  public void initContactModification() {
+  public void initContactModification() throws InterruptedException {
     click(By.xpath("//*[@id=\"maintable\"]/tbody/tr[2]/td[8]/a/img"));
     JavascriptExecutor jse = (JavascriptExecutor) wd;
     jse.executeScript("window.scrollBy(0,350)", "");
+    Thread.sleep(1000);
   }
 
   public void deleteSelectedContactsFromHomePage() {
@@ -83,4 +85,7 @@ public class ContactHelper extends HelperBase {
   }
 
 
+  public int getContactCount() {
+    return wd.findElements(By.name("selected[]")).size();
+  }
 }
