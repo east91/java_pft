@@ -1,11 +1,16 @@
 package com.stqa.pft.addressbook.appmanager;
 
 import com.stqa.pft.addressbook.model.ContactData;
+import com.stqa.pft.addressbook.model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends HelperBase {
 
@@ -18,8 +23,10 @@ public class ContactHelper extends HelperBase {
    // click(By.name("selected[]"));
   }
 
-  public void initContactModification() throws InterruptedException {
-    click(By.xpath("//*[@id=\"maintable\"]/tbody/tr[2]/td[8]/a/img"));
+  public void initContactModification(int index) throws InterruptedException {
+    wd.findElements(By.xpath("//img[@title='Edit'][@alt='Edit']")).get(index).click();
+    //click(By.xpath("//img[@title='Edit'][@alt='Edit']"));
+    //click(By.xpath("//*[@id=\"maintable\"]/tbody/tr[2]/td[8]/a/img"));  This is auto-generated locator
     JavascriptExecutor jse = (JavascriptExecutor) wd;
     jse.executeScript("window.scrollBy(0,350)", "");
     Thread.sleep(1000);
@@ -88,4 +95,16 @@ public class ContactHelper extends HelperBase {
   public int getContactCount() {
     return wd.findElements(By.name("selected[]")).size();
   }
+
+  /*public List<ContactData> getContactList() {
+    List<ContactData> contacts = new ArrayList();
+    List<WebElement> elements = wd.findElements(By.name("selected[]"));
+    for (WebElement element : elements) {
+    String name = element.getText();
+    int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+    ContactData contact = new ContactData(id, name, null, null);
+    contacts.add(contact);
+  }
+    return contacts;
+}*/
 }
