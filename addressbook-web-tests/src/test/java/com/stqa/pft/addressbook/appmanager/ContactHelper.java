@@ -96,15 +96,15 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  /*public List<ContactData> getContactList() {
+  public List<ContactData> getContactList() {
     List<ContactData> contacts = new ArrayList();
-    List<WebElement> elements = wd.findElements(By.name("selected[]"));
+    List<WebElement> elements = wd.findElements(By.xpath("//input[@type='checkbox'][@name='selected[]']"));  //By.xpath("//img[@title='Edit'][@alt='Edit']")
     for (WebElement element : elements) {
     String name = element.getText();
-    int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-    ContactData contact = new ContactData(id, name, null, null);
+    //int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+    ContactData contact = new ContactData(name, null, null, null, null, null);
     contacts.add(contact);
   }
     return contacts;
-}*/
+}
 }

@@ -11,11 +11,12 @@ public class ContactCreationTests extends TestBase {
   @Test
   public void testContactCreation() throws InterruptedException {
     app.getNavigationHelper().gotoHomePage();
-    //List<ContactData> before = app.getContactHelper().getContactList();
-    int before = app.getContactHelper().getContactCount();
+    List<ContactData> before = app.getContactHelper().getContactList();
+   // int before = app.getContactHelper().getContactCount();
     app.getContactHelper().createContact(new ContactData("test1", null, null, null, null, "test1"));
     app.getNavigationHelper().gotoHomePage();
-    int after = app.getContactHelper().getContactCount();
-    Assert.assertEquals(after, before + 1);
+    List<ContactData> after = app.getContactHelper().getContactList();
+//    int after = app.getContactHelper().getContactCount();
+    Assert.assertEquals(after.size(), before.size() + 1);
   }
 }
