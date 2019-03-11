@@ -3,21 +3,19 @@ package com.stqa.pft.addressbook.tests;
 import com.stqa.pft.addressbook.model.GroupData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class GroupCreationTests extends TestBase {
 
   @Test
   public void testGroupCreation() throws InterruptedException {
-    app.getNavigationHelper().gotoGroupPage();
+    app.goTo().groupPage();
     Thread.sleep(100);
-    List<GroupData> before = app.getGroupHelper().getGroupList();
+    List<GroupData> before = app.group().List();
     GroupData group = new GroupData("test2", null, null);
-    app.getGroupHelper().createGroup(group);
-    List<GroupData> after = app.getGroupHelper().getGroupList();
+    app.group().create(group);
+    List<GroupData> after = app.group().List();
     Assert.assertEquals(after.size(), before.size() + 1);
 
     before.add(group);

@@ -20,7 +20,7 @@ public class ContactHelper extends HelperBase {
 
   public void selectContact(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
-   // click(By.name("selected[]"));
+    // click(By.name("selected[]"));
   }
 
   public void initContactModification(int index) throws InterruptedException {
@@ -98,13 +98,15 @@ public class ContactHelper extends HelperBase {
 
   public List<ContactData> getContactList() {
     List<ContactData> contacts = new ArrayList();
-    List<WebElement> elements = wd.findElements(By.xpath("//input[@type='checkbox'][@name='selected[]']"));  //By.xpath("//img[@title='Edit'][@alt='Edit']")
+    //List<WebElement> elements = wd.findElements(By.xpath("//input[@type='checkbox'][@name='selected[]']"));  //By.xpath("//img[@title='Edit'][@alt='Edit']")
+    List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
     for (WebElement element : elements) {
-    String name = element.getText();
-    //int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-    ContactData contact = new ContactData(name, null, null, null, null, null);
-    contacts.add(contact);
-  }
+      String name = element.getText();
+      //int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      int id = Integer.parseInt(element.findElement(By.xpath("//input[@type='checkbox'][@name='selected[]']")).getAttribute("value"));
+      ContactData contact = new ContactData(id, name, null, null, null, null, null);
+      contacts.add(contact);
+    }
     return contacts;
-}
+  }
 }
