@@ -12,7 +12,7 @@ public class ContactModificationTests extends TestBase {
 
   @Test      //need to add option to modify last contact. the problem is - can't find locator for now
   public void testContactModification() throws InterruptedException {
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
 
     if (!app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData("test1", null, null, null, null, "test1"));
@@ -22,7 +22,7 @@ public class ContactModificationTests extends TestBase {
     ContactData contact = new ContactData(before.get(before.size() - 1).getId(),"edited test1", "edited test2", "edited test3", "edited test4", "edited test5", null);
     app.getContactHelper().fillContactForm(contact, false);
     app.getContactHelper().submitUpdateContactModification();
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size());
 

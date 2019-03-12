@@ -10,7 +10,7 @@ public class ContactDeletionTests extends TestBase {
 
   @Test     //need to add option to delete last contact. the problem is - can't find locator for now
   public void testContactDeletion() throws InterruptedException {
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
 
     if (!app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData("test1", null, null, null, null, "test1"));
@@ -19,7 +19,7 @@ public class ContactDeletionTests extends TestBase {
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().initContactModification(before.size() - 1);
     app.getContactHelper().deleteSelectedContacts();
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
     List<ContactData> after = app.getContactHelper().getContactList();
     //int after = app.getContactHelper().getContactCount();
     Assert.assertEquals(after.size(), before.size() - 1);
