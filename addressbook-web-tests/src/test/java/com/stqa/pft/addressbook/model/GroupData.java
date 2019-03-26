@@ -48,8 +48,10 @@ public class GroupData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     GroupData groupData = (GroupData) o;
-    return id == groupData.id &&
-            Objects.equals(name, groupData.name);
+    if (id != groupData.id) return false;
+    return name != null ? name.equals(groupData.name) : groupData.name == null;
+   /* return id == groupData.id &&     //this is auto generated piece of code
+            Objects.equals(name, groupData.name);*/
   }
 
   @Override
